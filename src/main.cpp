@@ -4,12 +4,6 @@
 #include <NTP.h>
 #include <U8g2lib.h>
 
-
-//char ssid[] = "RedHatN";
-//char password[] = "HeatherDriveN";
-//char ssid[] = "AC-T50";
-//char password[] = "TeamH!r3familyT50";
-
 #ifdef U8X8_HAVE_HW_SPI
 #include <SPI.h>
 #endif
