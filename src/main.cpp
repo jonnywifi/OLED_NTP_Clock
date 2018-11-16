@@ -54,8 +54,9 @@ void setup() {
   }
 
 bool tick = false;
-uint8_t lastSeconds = 0;
+uint8_t lastxPos = 0;
 uint8_t xPos = 0;
+uint8_t xPosJump = 0;
 
 void loop() {
   ntp.update();
@@ -63,10 +64,12 @@ void loop() {
   xPos = 126 * ntp.seconds() / 59;
    do {
         if (tick == true ) {
-          u8g2.drawBox(xPos - 5, 0, 5, 3);
+          u8g2.drawBox(xPosJump - 5, 0, 5, 3);
+          u8g2.drawBox(126 - xPosJump, 0, 5, 3);
         }
         else {
-          u8g2.drawBox(126 - xPos, 0, 5, 3);
+          u8g2.drawBox(126 - xPosJump, 0, 5, 3);
+          u8g2.drawBox(xPosJump - 5, 0, 5, 3);
         }
         u8g2.setFont(u8g2_font_fur35_tn);
         u8g2.setFontPosCenter();
@@ -74,8 +77,12 @@ void loop() {
         u8g2.setFont(u8g2_font_pcsenior_8r);
         u8g2.setFontPosBaseline();
         u8g2.drawStr(64 - u8g2.getStrWidth(ntp.formattedTime("%A, %b %d")) / 2,61,ntp.formattedTime("%A, %b %d"));
+        xPosJump += 1;
+
      } while ( u8g2.nextPage() );
-  delay(1000);
-  if (( ntp.seconds() == 0 ) && (lastSeconds = 59 )) tick = !tick;
-  lastSeconds = ntp.seconds();
+  delay(8);
+  if ( xPos != lastxPos ) xPosJump = 0;
+  //if (( ntp.seconds() == 0 ) && (lastSeconds = 59 )) tick = !tick;
+  if (( xPos == 0 ) && (lastxPos != 0 )) tick = !tick;
+  lastxPos = xPos;
   }
