@@ -3,7 +3,7 @@
 #include <WiFiUdp.h>
 #include <NTP.h>
 #include <U8g2lib.h>
-#include "wificreds.cpp"
+#include "wificreds.h"
 
 //char ssid[] = "MySSID";
 //char password[] = "MyPassword";
