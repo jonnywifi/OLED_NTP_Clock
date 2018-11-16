@@ -36,8 +36,8 @@ void display_text(char *text) {
 void setup() {
   Serial.begin(9600);
   u8g2.begin();  
-  u8g2.setDisplayRotation(U8G2_R0);
-  u8g2.setFlipMode(1);
+  //u8g2.setDisplayRotation(U8G2_R0);
+  //u8g2.setFlipMode(1);
   WiFi.begin(ssid, password);
 
   while (WiFi.status() != WL_CONNECTED) {
