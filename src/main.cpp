@@ -4,6 +4,10 @@
 #include <NTP.h>
 #include <U8g2lib.h>
 
+//char ssid[] = "MySSID";
+//char password[] = "MyPassword";
+
+
 #ifdef U8X8_HAVE_HW_SPI
 #include <SPI.h>
 #endif
